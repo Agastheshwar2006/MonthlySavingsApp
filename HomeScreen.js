@@ -9,24 +9,62 @@ import {
     TouchableOpacity,
     Alert,
     ScrollView} from 'react-native';
+    import MyHeader from '../components/MyHeader'
      
 export default class HomeScreen extends Component{
     render(){
   return(
       <View>
+          <MyHeader/>
         <Text>
             IncomeScreen
         </Text>
-        <Text>
-            expencies:
-        </Text>
-        <Text>
-            Savings
-        </Text>
+        <TouchableOpacity style = {styles.button}>
+           <Text style = {styles.buttonText}>
+           Expenses  
+           </Text> 
+        
+        </TouchableOpacity>
+       
+        <TouchableOpacity style = {styles.button}>
+           <Text style = {styles.buttonText}>
+           Savings
+           </Text> 
+           </TouchableOpacity>
       
        
       </View>
   )
    
     }
+
+
 }
+const styles = StyleSheet.create({
+    button:{
+        width:300,
+        height:50,
+        justifyContent:'center',
+        alignItems:'center',
+        borderRadius:25,
+        backgroundColor:"brown",
+        shadowColor: "#000",
+        shadowOffset: {
+           width: 0,
+           height: 8,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 10.32,
+        elevation: 16,
+        padding: 10
+      },
+
+      buttonText:{
+        color:'#fff',
+        fontWeight:'200',
+        fontSize:20
+      }
+
+
+
+})
