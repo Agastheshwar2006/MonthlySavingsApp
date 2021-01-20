@@ -12,6 +12,8 @@ import {
 
 import db from '../config';
 import firebase from 'firebase';
+//import HomeScreen from './HomeScreen';
+
 
 export default class WelcomeScreen extends Component{
     constructor(){
@@ -57,12 +59,11 @@ export default class WelcomeScreen extends Component{
            return Alert.alert(errorMessage)
          });
        }
-     }
-    
+      }
     userLogin = (emailId, password)=>{
        firebase.auth().signInWithEmailAndPassword(emailId, password)
        .then(()=>{
-         this.props.navigation.navigate('DonateBooks')
+      this.props.navigation.navigate('HomeScreen')
        })
        .catch((error)=> {
          var errorCode = error.code;
@@ -184,7 +185,7 @@ export default class WelcomeScreen extends Component{
     
             </View>
               {
-                this.showModal()
+            this.showModal()
               }
             <View style={{justifyContent:'center', alignItems:'center'}}>
               { /*<SantaAnimation/>*/}
@@ -214,17 +215,19 @@ export default class WelcomeScreen extends Component{
             <TouchableOpacity
                style={[styles.button,{marginBottom:20, marginTop:20}]}
                onPress = {()=>{
-               //  this.userLogin(this.state.emailId, this.state.password)
+                 this.userLogin(this.state.emailId, this.state.password)
                }}
                >
                <Text style={styles.buttonText}>Login</Text>
+
              </TouchableOpacity>
     
-             <TouchableOpacity
+                <TouchableOpacity
                style={styles.button}
-              // onPress={()=>this.setState({ isModalVisible:true})}
+             onPress={()=>this.setState({ isModalVisible:true})}
                >
                <Text style={styles.buttonText}>SignUp</Text>
+
              </TouchableOpacity>
           </View>
         </View>
@@ -253,7 +256,7 @@ const styles = StyleSheet.create({
      width: 300,
      height: 40,
      borderBottomWidth: 1.5,
-     borderColor : 'blackss',
+     borderColor : 'blackssss',
      fontSize: 20,
      margin:10,
      paddingLeft:10
